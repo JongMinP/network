@@ -46,7 +46,7 @@ public class ChatClientApp {
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
-			scanner.close();
+			AutoClose.closeResource(scanner);
 
 		}
 

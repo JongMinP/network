@@ -18,8 +18,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
-import java.net.InetAddress;
-import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
 
@@ -135,17 +133,7 @@ public class ChatWindow {
 			} catch (IOException e) {
 				e.printStackTrace();
 			} finally {
-
-				try {
-					if (br != null) {
-						br.close();
-					}
-					if (pw != null) {
-						pw.close();
-					}
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+				AutoClose.closeResource(br, pw);
 			}
 
 		}

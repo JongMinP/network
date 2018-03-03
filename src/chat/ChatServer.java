@@ -29,11 +29,7 @@ public class ChatServer {
 			e.printStackTrace();
 		} finally {
 			if (serverSocket != null && !serverSocket.isClosed()) {
-				try {
-					serverSocket.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+				AutoClose.closeResource(serverSocket);
 			}
 		}
 

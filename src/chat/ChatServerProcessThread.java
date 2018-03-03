@@ -7,7 +7,6 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.io.Writer;
 import java.net.Socket;
-import java.net.SocketException;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 
@@ -55,17 +54,7 @@ public class ChatServerProcessThread extends Thread {
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
-
-			try {
-				if (br != null) {
-					br.close();
-				}
-				if (pw != null) {
-					pw.close();
-				}
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+			AutoClose.closeResource(br, pw);
 		}
 
 	}
