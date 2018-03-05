@@ -21,6 +21,9 @@ public class TCPServer {
 			// 1. 서버소켓 생성
 			serverSocket = new ServerSocket();
 
+			// Time-wait 상태에서 서버 재실행이 가능하게 끔 함
+			serverSocket.setReuseAddress(true);
+
 			// 2. 바인딩(Binding)
 			String localhostAddress = InetAddress.getLocalHost().getHostAddress();
 			serverSocket.bind(new InetSocketAddress(localhostAddress, SERVER_PORT));
